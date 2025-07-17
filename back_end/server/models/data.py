@@ -29,7 +29,7 @@ class Payroll(db.Model, SerializerMixin):
     # deductions
     advance = db.Column(db.Integer)
     nssf = db.Column(db.Integer)
-    shif = db.Column(db.Integer)  # Renamed from 'shif' if that's what you meant
+    shif = db.Column(db.Integer) 
     loan = db.Column(db.Integer)
     sacco = db.Column(db.Integer)
     total_deductions = db.Column(db.Integer)

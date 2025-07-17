@@ -9,6 +9,7 @@ class Register(Resource):
         username = data.get('username')
         email = data.get('email')
         password = data.get('password')
+        role = data.get('role', 'employee')  # ✅ Default role is 'employee'
 
         if not username or not email or not password:
             return {"message": "Missing fields"}, 400
@@ -16,7 +17,7 @@ class Register(Resource):
         if User.query.filter((User.username == username) | (User.email == email)).first():
             return {"message": "User already exists"}, 400
 
-        new_user = User(username=username, email=email)
+        new_user = User(username=username, email=email, role=role)
         new_user.set_password(password)
 
         db.session.add(new_user)
